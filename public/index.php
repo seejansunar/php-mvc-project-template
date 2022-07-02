@@ -2,9 +2,22 @@
 
     class App
     {
+        protected $controller = '_404';
+
         function __construct()
         {
-            print_r($this->getURL());
+            $arr = $this->getURL();
+
+            $filename = "../app/controllers/".ucfirst($arr[0]).".php";
+            if(file_exists($filename))
+            {
+                require $filename;
+                $this->controller = $arr[0];
+            }else{
+                require "../app/controllers/".$this->controller.".php";
+            }
+
+            $mycontroller = new $this->controller();
         }
 
         private function getURL()
