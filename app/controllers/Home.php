@@ -2,9 +2,19 @@
 
     class Home
     {
-        function __construct()
+        public function index()
         {
-            echo "home page found";
+            echo "home view page";
+        }
+
+        public function edit($id)
+        {
+            echo "home editing ".$id;
+        }
+
+        public function delete($id)
+        {
+            echo "home deleting ".$id;
         }
     }
 
